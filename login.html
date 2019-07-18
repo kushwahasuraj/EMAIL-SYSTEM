@@ -1,0 +1,217 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block body %}
+<style>
+
+body{
+
+	height:700px;
+	margin:0px;
+	padding:0px;
+	background-image:url("https://www.pexels.com/photo/green-leaf-plant-covered-with-white-smoke-1405773/");
+
+}
+.base{
+	position:absolute;
+	width:100%;
+	top:0px;
+	left:0px;
+	color:black;
+
+}
+
+
+#info1{
+	width:360px;
+	margin-top:25px;
+	font-family: 'Open Sans', sans-serif;
+	font-size:36px;
+	color:white;
+	background: rgba(0, 0, 0, 0.2);
+
+}
+#info2{
+	width:360px;
+	margin-top:17px;
+	font-family: 'Open Sans', sans-serif;
+	font-size:24px;
+	font-weight:bold;
+	color:white;
+	background: rgba(0, 0, 0, 0.2);
+
+}
+#form1{
+	margin-top:17px;
+	width:355px;
+	height:280px;
+    padding-top:40px;
+
+	box-shadow: 0px 1px 1px 1px glass;
+	color:glass;
+	background: rgba(0, 0, 0, 0.2);
+
+}
+#form-img{
+    color:glass;
+	background: rgba(0, 0, 0, 0.1);
+	width:99px;
+	height:99px;
+}
+#mailbox{
+	width:270px;
+	height:35px;
+	border-radius:8px 8px 8px 8px;
+
+	font-size:18px;
+	margin-top:25px;
+	border-width: 0px;
+	border-style:solid;
+	border-color: black;
+	background: rgba(0, 0, 0, 0.1);
+}
+#button2{
+	width:270px;
+	height:35px;
+
+	margin-top:16px;
+
+	font-family:verdana;
+	font-size:14px;
+	color:white;
+	border-radius:8px 8px 8px 8px;
+	border-width: 0px;
+	border-style:solid;
+	background: rgba(0, 0, 0, 0.1);
+
+}
+#info3{
+	float:right;
+	margin-top:16px;
+	font-size:18px;
+	font-family: 'Open Sans', sans-serif;
+	color:#498af2;
+	padding-right:42px;
+	font-weight:bold;
+}
+#info3 a{
+	color:#498af2;
+	text-decoration:none;
+}
+#info4{
+	margin-top:-70px;
+	font-size:20px;
+	font-family: 'Open Sans', sans-serif;
+
+	font-weight:bold;
+}
+#info4 a{
+	color:#498af2;
+	text-decoration:none;
+}
+#info5{
+	margin-top:30px;
+	font-size:13px;
+	font-family: 'Open Sans', sans-serif;
+	color:#87898b;
+	font-weight:bold;
+}
+
+
+#bottom {
+	float:left;
+	padding:0px;
+	margin:0px;
+
+}
+#bottom ul{
+	list-style: none;
+
+}
+#bottom ul li{
+	float:left;
+	margin-left:20px;
+
+
+}
+</style>
+<style>
+  .speech {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  .speech input {border: 0; width: 240px; display: inline-block; height: 30px;}
+  .speech img { float: right; margin:0  top:-50px; width: 40px }
+</style>
+
+	<body style="background-repeat:no-repeat;background-size:100%">
+
+
+	<script>
+  function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('transcript').value
+                                 = e.results[0][0].transcript.split(' ').join('').toLowerCase();
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+</script>
+
+		<center><div class="base">
+
+			</div>
+			<form  action="{% url 'password' %}" style="background: rgba(0, 0, 0, 0.1); width:600px; height: 600px;">
+			<div id="info1">
+				One account. All of Google.
+			</div>
+			<div id="info2">
+				Sign in to continue to Gmail
+			</div>
+			<div id="form1">
+				<div id="form-img">
+				<img  style="color:transparent;"src="data:image/png;base64,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" width="99" height="99" />
+			    </div>
+				<form>
+				<div id="mailbox" class="speech">
+				<input type="email" placeholder="Speak Email"  id="transcript" onclick="startDictation()"  name="email" style="width:270px; height:35px; border-radius:8px 8px 8px 8px;background: rgba(0, 0, 0, 0.01);  font-size:16px; padding-left:8px;" required >
+				<!- <img onclick="startDictation()" src="E:\pictures\voiceicon.gif" />
+				</div>
+				<div>
+				 <a href="password.html">  <input type="submit" id="button2" value="Next" /> </a>
+				</div>
+				</form>
+				<div id="info3">
+				    <a href="#"/>Need help?</a>
+			    </div>
+			</div>
+			<div id="info4">
+				    <a href="{% url 'register' %}"/>Create account</a>
+			</div>
+
+
+
+			<div id="bottom">
+				<ul >
+					<li>Designed by Pankaj Saini </li>
+
+				</ul>
+			</div>
+
+		</div>
+		</form>
+		</center>
+	{% endblock %}

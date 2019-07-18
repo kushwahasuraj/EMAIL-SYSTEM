@@ -1,0 +1,312 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block body %}
+<style>
+  .speech {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  .speech input {border: 0; width: 240px; display: inline-block; height: 30px;}
+  .speech img { float: right; margin:0  top:-50px; width: 40px }
+</style>
+<style>
+  .spell {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  .spell input {border: 0; width: 240px; display: inline-block; height: 30px;}
+  .spell img { float: right; margin:0  top:-50px; width: 40px }
+</style>
+<style>
+  .speak {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  .speak input {border: 0; width: 240px; display: inline-block; height: 30px;}
+  .speak img { float: right; margin:0  top:-50px; width: 40px }
+</style>
+<style>
+  .spoke {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  .spoke input {border: 0; width: 240px; display: inline-block; height: 30px;}
+  .spoke img { float: right; margin:0  top:-50px; width: 40px }
+</style>
+<style>
+  .span {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  .span input {border: 0; width: 240px; display: inline-block; height: 30px;}
+  .span img { float: right; margin:0  top:-50px; width: 40px }
+</style>
+<style>
+body {font-family: Arial, Helvetica, sans-serif; background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuF0u3QXfwpk1CoGjZD0WL7O3WutKUL6N2mqSd5ojZFV3bG_AkrA");
+background-repeat:no-repeat;
+background-size:cover;
+margin-top:0px;
+padding-top:0px;
+}
+
+
+input[type=text], input[type=password], input[type=tel] {
+    width:100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+	background: rgba(0, 0, 0, 0.2);
+
+}
+
+input[type=number]:focus, input[type=password]:focus,input[type=tel]:focus, {
+    background-color: #ddd;
+    outline: none;
+}
+
+input[type=number], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+   	background: rgba(0, 0, 0, 0.2);
+
+}
+input[type=Date], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+  	background: rgba(0, 0, 0, 0.2);
+
+}
+
+input[type=Date]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+
+input[type=text]:focus, input[type=password]:focus {
+	background: rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+
+button {
+  	background: rgba(0, 0, 0, 0.2);
+
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity:1;
+}
+
+
+.cancelbtn {
+    padding: 14px 20px;
+   	background: rgba(0, 0, 0, 0.5);
+
+}
+
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+
+.container {
+    padding: 16px;
+}
+
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
+</style>
+ <script>
+  function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('transcript').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+  function start() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('transcripted').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+   function startEmail() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('transcriptes').value
+                                 = e.results[0][0].transcript.split(' ').join('').toLowerCase();
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+  function startNumber() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('trans').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+  function startName() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('translate').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+</script>
+
+<div style="float:center;margin-left:500px">
+<form  style="width:600px;height:1000px" action="{% url 'login' %}" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+	<label  for="text"><b>Username</b></label></br>
+    <input class="speech" type="text"  id="transcript" onclick="startDictation()"  placeholder="Username" name="name" required></br>
+
+
+
+
+	<label  for="text"><b>Mobile no</b></label></br>
+    <input class="spell" type="number" value  id="transcripted" onclick="start()" placeholder="Mobile no" name="mobile" required></br>
+
+	<label for="text"><b>Date of Birth</b></label></br>
+    <input type="Date" placeholder="Date of Birth" name="dob" required></br>
+
+
+    <label for="email"><b>Email</b></label></br>
+    <input  class="speak" type="text"  id="transcriptes" onclick="startEmail()" placeholder="Enter Email" name="email" required></br>
+
+    <label for="psw"><b>Password</b></label></br>
+    <input class="spoke" type="password"  id="trans" onclick="startNumber()" placeholder="Enter Password" name="psw" required></br>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label></br>
+    <input  class="span" type="password"  id="translate" onclick="startName()" placeholder="Repeat Password" name="psw-repeat" required></br>
+
+	<label for="#"><b>Gender</b></label></br>
+	<label>
+      <input type="radio" checked="checked" name="remember" style="margin-bottom:15px"> Male
+    </label>
+    <label>
+      <input type="radio" checked="no" name="remember" style="margin-bottom:15px"> Female
+    </label>
+    <label></br>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <a href="{% url 'login' %}"><button type="button"  class="cancelbtn" >Cancel</button></a>
+      <a href="#"><button type="submit" class="signupbtn">Sign Up</button></a>
+    </div>
+  </div>
+</form>
+</div>
+{% endblock %}
